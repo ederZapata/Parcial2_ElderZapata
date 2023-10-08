@@ -160,5 +160,15 @@ namespace Parcial2.Controllers
         {
           return (_context.NaturalPersons?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        private int AgePerson() 
+        { 
+            DateTime currentDate = DateTime.Now;
+            DateTime bornDate = new DateTime(bornYear, 01, 01);
+
+            int age = currentDate.Year - bornDate.Year; 
+
+            return age;
+        }
     }
 }
