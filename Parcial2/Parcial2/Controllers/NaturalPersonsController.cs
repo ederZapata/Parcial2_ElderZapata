@@ -25,6 +25,8 @@ namespace Parcial2.Controllers
               return _context.NaturalPersons != null ? 
                           View(await _context.NaturalPersons.ToListAsync()) :
                           Problem("Entity set 'DataBaseContext.NaturalPersons'  is null.");
+         
+            // el metodo ToListAsync sirve para consultar una LISTA
         }
 
         // GET: NaturalPersons/Details/5
@@ -35,8 +37,9 @@ namespace Parcial2.Controllers
                 return NotFound();
             }
 
-            var naturalPerson = await _context.NaturalPersons
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var naturalPerson = await _context.NaturalPersons.FirstOrDefaultAsync(m => m.Id == id);
+            // el metodo FirstOrDefaultAsync sirve para consultar un OBJETO
+
             if (naturalPerson == null)
             {
                 return NotFound();
@@ -61,6 +64,7 @@ namespace Parcial2.Controllers
             if (ModelState.IsValid)
             {
                 naturalPerson.Id = Guid.NewGuid();
+               naturalPerson.CreatedDate = DateTime.Now; // automatizo el createdDate
                 _context.Add(naturalPerson);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -76,7 +80,10 @@ namespace Parcial2.Controllers
                 return NotFound();
             }
 
-            var naturalPerson = await _context.NaturalPersons.FindAsync(id);
+            var naturalPerson = await _context.NaturalPersons.FindAsync(id); //voy a la bd traigo la natural person
+                                                                             //con el id
+            
+            
             if (naturalPerson == null)
             {
                 return NotFound();
