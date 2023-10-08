@@ -64,6 +64,7 @@ namespace Parcial2.Controllers
             if (ModelState.IsValid)
             {
                 naturalPerson.Id = Guid.NewGuid();
+               // naturalPerson.Age = CalculateAge(naturalPerson.BirthDate);
                naturalPerson.CreatedDate = DateTime.Now; // automatizo el createdDate
                 _context.Add(naturalPerson);
                 await _context.SaveChangesAsync();
