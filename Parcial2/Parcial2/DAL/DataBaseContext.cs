@@ -11,9 +11,15 @@ namespace Parcial2.DAL
         {
 
         }
-        
 
-        //DbSet me sirve para convertir mi clase Country en una tabla de BD. El nombre de la tabla será "Countries"
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<NaturalPerson>().HasIndex(c => c.Name).IsUnique(); //Yo con esta línea controlo la duplicidad de mis países
+        }
+        
+            
+            //DbSet me sirve para convertir mi clase Country en una tabla de BD. El nombre de la tabla será "Countries"
         public DbSet<NaturalPerson> NaturalPersons { get; set; }
 
     }

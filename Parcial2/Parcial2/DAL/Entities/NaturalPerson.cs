@@ -19,13 +19,7 @@ namespace Parcial2.DAL.Entities
         [Display(Name = "Ingrese su edad")]        
         [Required(ErrorMessage = "¡El campo {0} es requerido!")]
         public string Age { get; set; }
-
-
-
+        
     }
-
-
-
-
 }
 
