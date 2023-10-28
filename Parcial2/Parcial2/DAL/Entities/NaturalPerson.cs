@@ -20,7 +20,7 @@ namespace Parcial2.DAL.Entities
         [Required(ErrorMessage = "¡El campo {0} es requerido!")]
         public string Age { get; set; }
         
-        public string Name { get; set; }
+        public string Name { get; set; }()prueba
     }
 }
 
